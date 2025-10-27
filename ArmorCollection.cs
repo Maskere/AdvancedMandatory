@@ -19,14 +19,6 @@ public class ArmorCollection : DefenceItem{
         }
     }
 
-    // public void AddArmor(DefenceItem defenceItem){
-    //     armors.Add(defenceItem);
-    // }
-
-    // public void RemoveArmor(DefenceItem defenceItem){
-    //     armors.Remove(defenceItem);
-    // }
-
     public override void DecreaseArmorValue(Armor target, int amount){
         foreach(DefenceItem item in armors.Values){
             item.DecreaseArmorValue(target,amount);

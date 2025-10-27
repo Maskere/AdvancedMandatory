@@ -16,7 +16,7 @@ public class EventHandler : IObserverHandler{
 
     public void NotifyObserverListeners(string status){
         foreach(ObserverListener obs in observers){
-            obs.Update(status);
+            obs.GetUpdate(status);
         }
     }
 }

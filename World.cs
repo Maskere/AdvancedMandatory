@@ -9,17 +9,33 @@ public class World<T> : IDisposable{
     private T[,] gridArray;
 
     /// <summary>
-    /// Initializes the grid using a function delegate.
+    /// Initializes the grid using a function delegate with the width and height provided from a configuration file.
     /// The delegate function is called once for each grid coordinate to create an element of type T.
-    /// Searches for an xml document and tries to read the content to get the grid width and height.
+    /// </summary>
+    /// <param name="cell"></param>
+    public World(Func<World<T>,int,int,T> cell){
+        originalCell = cell;
+
+        LoadConfig(Environment.GetEnvironmentVariable("WORLD_CONFIG_PATH"));
+
+        gridArray = new T[this.width,this.height];
+
+        for(int x = 0; x < gridArray.GetLength(0); x++){
+            for(int y = 0; y < gridArray.GetLength(1); y++){
+                gridArray[x,y] = cell(this,x,y);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Initializes the grid using a function delegate with the provided width and height from the caller.
+    /// The delegate function is called once for each grid coordinate to create an element of type T.
     /// </summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
     /// <param name="cell"></param>
     public World(int width, int height,Func<World<T>,int,int,T> cell){
         originalCell = cell;
-
-        LoadConfig(Environment.GetEnvironmentVariable("WORLD_CONFIG_PATH"),width,height);
 
         gridArray = new T[this.width,this.height];
 
@@ -77,19 +93,15 @@ public class World<T> : IDisposable{
         gridArray[x,y] = originalCell.Invoke(this,x,y);
     }
 
-    /// <summary>
-    /// Tries to get world width and height from a configuration file.
-    /// If no configuration file, use the world width and height provided from the user in the contructor.
-    /// </summary>
-    /// <param name="confFile"></param>
-    /// <param name="ctorWidth"></param>
-    /// <param name="ctorHeight"></param>
-    private void LoadConfig(string? confFile, int ctorWidth, int ctorHeight){
-        if(confFile == null || !File.Exists(confFile)){
-            width = ctorWidth;
-            height = ctorHeight;
-            return;
-        }
+   /// <summary>
+   /// Tries to get world width and height from a configuration file.
+   /// If no configuration throw a FileNotFoundException
+   /// </summary>
+   /// <param name="confFile"></param>
+   /// <exception cref="FileNotFoundException"></exception>
+   /// <exception cref="ArgumentException"></exception>
+    private void LoadConfig(string? confFile){
+        if(confFile == null || !File.Exists(confFile)) throw new FileNotFoundException("Configuration file not found");
 
         XmlDocument? configDoc = new();
         configDoc.Load(confFile);
@@ -108,6 +120,26 @@ public class World<T> : IDisposable{
                 height = h;
             }
         }
+        else{
+            throw new ArgumentException($"Could not find WorldWidth and WorldHeight from {confFile}"); 
+        }
+    }
+
+    /// <summary>
+    /// Tries to get world width and height from a configuration file.
+    /// If no configuration file, use the world width and height provided from the user in the contructor.
+    /// </summary>
+    /// <param name="confFile"></param>
+    /// <param name="ctorWidth"></param>
+    /// <param name="ctorHeight"></param>
+    private void LoadConfig(string? confFile, int ctorWidth, int ctorHeight){
+        if(confFile == null || !File.Exists(confFile)){
+            width = ctorWidth;
+            height = ctorHeight;
+            return;
+        }
+
+        LoadConfig(confFile);
     }
 
     public void Dispose(){
