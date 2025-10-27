@@ -1,11 +1,10 @@
 namespace Mandatory;
 
-public abstract class Creature{
+public abstract class Creature : GameObject{
     private ArmorCollection defence;
     private WeaponCollection offence;
 
     private INotifier notifier;
-    public string? Name {get;set;}
     public int HitPoint {get;set;}
 
     /// <summary>
@@ -43,5 +42,8 @@ public abstract class Creature{
 
     public int GetTotalOffence(){
         return offence.GetTotalAttackDamage();
+    }
+
+    public override void Instantiate(){
     }
 }

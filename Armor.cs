@@ -2,13 +2,18 @@ namespace Mandatory;
 
 public class Armor : DefenceItem{
     private int armorAmount;
-    public ArmorSlot Slot {get;}
+    public ArmorSlot Slot {get;private set;}
 
     public Armor(int armorAmount,
             IIncreaseArmorValue increaseArmorComponent,
             IDecreaseArmorValue decreaseArmorComponent, ArmorSlot slot) : base(increaseArmorComponent,decreaseArmorComponent){
         this.armorAmount = armorAmount;
         Slot = slot;
+    }
+
+    public Armor() : base(null,null) {
+        this.armorAmount = 0;
+        Slot = ArmorSlot.None;
     }
 
     public void IncreaseArmorValue(int amount){
@@ -33,5 +38,9 @@ public class Armor : DefenceItem{
 
     public override int GetTotalDefencePoint() {
         return armorAmount;
+    }
+
+    public override void Instantiate() {
+        throw new NotImplementedException();
     }
 }

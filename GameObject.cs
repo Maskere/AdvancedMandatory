@@ -8,4 +8,6 @@ public abstract class GameObject{
     public override string ToString() {
         return $"{Name} - Lootable: {Lootable} - Removeable: {Removeable}";
     }
+
+    public abstract void Instantiate();
 }
