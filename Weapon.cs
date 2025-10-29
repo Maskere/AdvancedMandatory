@@ -2,7 +2,12 @@ namespace Mandatory;
 
 public class Weapon : AttackItem{
     private int damageAmount;
-    public WeaponSlot Slot {get;}
+    public WeaponSlot Slot {get;private set;}
+
+    public Weapon() : base(null,null){
+        damageAmount = 0;
+        Slot = WeaponSlot.None;
+    }
 
     public Weapon(int damageAmount,
             IIncreaseWeaponDamage increaseWeaponDamageComponent,
@@ -30,6 +35,10 @@ public class Weapon : AttackItem{
         target.damageAmount -= amount;
 
         base.DecreaseWeaponDamage(target, amount);
+    }
+
+    public void ChangeWeaponSlot(WeaponSlot slot){
+        this.Slot = slot;
     }
 
     public override int GetTotalAttackDamage() {

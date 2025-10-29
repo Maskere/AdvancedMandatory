@@ -4,16 +4,16 @@ public class Armor : DefenceItem{
     private int armorAmount;
     public ArmorSlot Slot {get;private set;}
 
-    public Armor(int armorAmount,
-            IIncreaseArmorValue increaseArmorComponent,
-            IDecreaseArmorValue decreaseArmorComponent, ArmorSlot slot) : base(increaseArmorComponent,decreaseArmorComponent){
-        this.armorAmount = armorAmount;
+    public Armor(ArmorSlot slot) : base(null,null) {
+        this.armorAmount = 0;
         Slot = slot;
     }
 
-    public Armor() : base(null,null) {
-        this.armorAmount = 0;
-        Slot = ArmorSlot.None;
+    public Armor(int armorAmount,
+            IIncreaseArmorValue? increaseArmorComponent,
+            IDecreaseArmorValue? decreaseArmorComponent, ArmorSlot slot) : base(increaseArmorComponent,decreaseArmorComponent){
+        this.armorAmount = armorAmount;
+        Slot = slot;
     }
 
     public void IncreaseArmorValue(int amount){
@@ -36,11 +36,11 @@ public class Armor : DefenceItem{
         base.DecreaseArmorValue(this,amount);
     }
 
-    public override int GetTotalDefencePoint() {
-        return armorAmount;
+    public void ChangeArmorSlot(ArmorSlot slot){
+        this.Slot = slot;
     }
 
-    public override void Instantiate() {
-        throw new NotImplementedException();
+    public override int GetTotalDefencePoint() {
+        return armorAmount;
     }
 }

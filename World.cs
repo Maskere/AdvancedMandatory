@@ -35,6 +35,8 @@ public class World<T> : IDisposable{
     /// <param name="height"></param>
     /// <param name="cell"></param>
     public World(int width, int height,Func<World<T>,int,int,T> cell){
+        this.width = width;
+        this.height = height;
         originalCell = cell;
 
         gridArray = new T[this.width,this.height];
@@ -71,9 +73,8 @@ public class World<T> : IDisposable{
     /// <param name="y"></param>
     /// <param name="value"></param>
     public void SetValue(int x,int y,T value){
-        if(x >= width || x < 0 || y >= height || y < 0){
-            throw new InvalidOperationException($"Coordinates {(x,y)} must be within the world bound");
-        }
+        if(x >= width || x < 0 || y >= height || y < 0) throw new InvalidOperationException($"Coordinates {(x,y)} must be within the world bound");
+        if(value == null) throw new ArgumentException($"Invalid input: {value}");
         gridArray[x,y] = value;
     }
 
@@ -112,12 +113,12 @@ public class World<T> : IDisposable{
         if(worldWidth != null && worldHeight != null){
             string gridWidthStr = worldWidth.InnerText.Trim();
             if(!int.TryParse(gridWidthStr,out int w)){
-                width = w;
+                this.width = w;
             }
 
             string gridHeightStr = worldHeight.InnerText.Trim();
             if(!int.TryParse(gridHeightStr,out int h)){
-                height = h;
+                this.height = h;
             }
         }
         else{
