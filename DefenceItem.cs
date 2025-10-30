@@ -4,14 +4,7 @@ public abstract class DefenceItem : GameObject, IIncreaseArmorValue,IDecreaseArm
     private IIncreaseArmorValue? increaseArmorComponent;
     private IDecreaseArmorValue? decreaseArmorComponent;
 
-    public IIncreaseArmorValue? IncreaseArmorComponent{
-        get => increaseArmorComponent;
-    }
-    public IDecreaseArmorValue? DecreaseArmorComponent{
-        get => decreaseArmorComponent;
-    }
-
-    public DefenceItem(IIncreaseArmorValue? increaseArmorComponent, IDecreaseArmorValue? decreaseArmorComponent){
+    public DefenceItem(IIncreaseArmorValue? increaseArmorComponent = null, IDecreaseArmorValue? decreaseArmorComponent = null){
         this.increaseArmorComponent = increaseArmorComponent;
         this.decreaseArmorComponent = decreaseArmorComponent;
     }

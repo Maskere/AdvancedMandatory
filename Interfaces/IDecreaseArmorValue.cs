@@ -1,5 +1,5 @@
 namespace Mandatory;
 
 public interface IDecreaseArmorValue{
-    void DecreaseArmorValue(Armor target, int amount);
+    void DecreaseArmorValue(IArmorModTarget target, int amount);
 }

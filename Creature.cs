@@ -25,6 +25,7 @@ public abstract class Creature : GameObject{
     }
 
     public abstract void TakeTurn();
+    public abstract void Loot(GameObject loot);
 
     public virtual void Hit(){
     }
@@ -39,7 +40,6 @@ public abstract class Creature : GameObject{
         notifier.Notify(status);
     }
 
-    public abstract void Loot(GameObject loot);
 
     public int GetTotalDefense(){
         return Defence.GetTotalDefencePoint();

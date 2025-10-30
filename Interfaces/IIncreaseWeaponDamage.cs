@@ -1,5 +1,5 @@
 namespace Mandatory;
 
 public interface IIncreaseWeaponDamage{
-    void IncreaseWeaponDamage(Weapon target, int amount);
+    void IncreaseWeaponDamage(IWeaponModTarget target, int amount);
 }

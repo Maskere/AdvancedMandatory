@@ -1,6 +1,6 @@
 namespace Mandatory;
 
-public class Armor : DefenceItem{
+public class Armor : DefenceItem, IArmorModTarget{
     private int armorAmount;
     public ArmorSlot Slot {get;private set;}
 
@@ -9,31 +9,9 @@ public class Armor : DefenceItem{
         Slot = slot;
     }
 
-    public Armor(int armorAmount,
-            IIncreaseArmorValue? increaseArmorComponent,
-            IDecreaseArmorValue? decreaseArmorComponent, ArmorSlot slot) : base(increaseArmorComponent,decreaseArmorComponent){
+    public Armor(int armorAmount, ArmorSlot slot) : base(null,null){
         this.armorAmount = armorAmount;
         Slot = slot;
-    }
-
-    public void IncreaseArmorValue(int amount){
-        this.IncreaseArmorValue(this,amount);
-    }
-
-    public override void IncreaseArmorValue(Armor target,int amount) {
-        target.armorAmount += amount;
-
-        base.IncreaseArmorValue(this, amount);
-    }
-
-    public void DecreaseArmorValue(int amount){
-        this.DecreaseArmorValue(this,amount);
-    }
-
-    public override void DecreaseArmorValue(Armor target,int amount) {
-        target.armorAmount -= amount;
-
-        base.DecreaseArmorValue(this,amount);
     }
 
     public void ChangeArmorSlot(ArmorSlot slot){
@@ -42,5 +20,9 @@ public class Armor : DefenceItem{
 
     public override int GetTotalDefencePoint() {
         return armorAmount;
+    }
+
+    public void ChangeArmorValue(int amount) {
+        this.armorAmount += amount;
     }
 }

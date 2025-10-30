@@ -1,9 +1,9 @@
 namespace Mandatory;
 
-public class ArmorCollection : DefenceItem{
+public class ArmorCollection{
     private Dictionary<ArmorSlot, DefenceItem> armors = new();
 
-    public ArmorCollection(IIncreaseArmorValue increaseArmorValue, IDecreaseArmorValue decreaseArmorValue) :base(increaseArmorValue,decreaseArmorValue){
+    public ArmorCollection(){
     }
 
     public void EquipArmor(Armor armor){
@@ -19,19 +19,7 @@ public class ArmorCollection : DefenceItem{
         }
     }
 
-    public override void DecreaseArmorValue(Armor target, int amount){
-        foreach(DefenceItem item in armors.Values){
-            item.DecreaseArmorValue(target,amount);
-        }
-    }
-
-    public override void IncreaseArmorValue(Armor target, int amount){
-        foreach(DefenceItem item in armors.Values){
-            item.IncreaseArmorValue(target,amount);
-        }
-    }
-
-    public override int GetTotalDefencePoint() {
+    public int GetTotalDefencePoint() {
         int totalArmor = 0;
 
         foreach(DefenceItem item in armors.Values){
