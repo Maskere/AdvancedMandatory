@@ -21,7 +21,7 @@ public abstract class AttackItem : IWeapon{
     /// <summary>
     /// Gets or sets the slot type this weapon occupies (e.g., MainHand, OffHand).
     /// </summary>
-    public WeaponSlot WeaponSlot {get;set;}
+    public abstract WeaponSlot WeaponSlot {get;set;}
     /// <summary>
     /// Gets or sets the position of the item in the game world.
     /// </summary>

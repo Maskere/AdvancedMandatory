@@ -29,6 +29,10 @@ public class ArmorCollection : IArmor{
     /// </summary>
     public Position Position { get;set;}
 
+    public Dictionary<ArmorSlot,IArmor> GetAllArmors(){
+        return new Dictionary<ArmorSlot,IArmor>(armors);
+    }
+
     /// <summary>
     /// Equips a new IArmor item into the collection.
     /// </summary>

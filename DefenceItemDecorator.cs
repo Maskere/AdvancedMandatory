@@ -41,20 +41,20 @@ public abstract class DefenceItemDecorator : IArmor{
     }
 
     /// <summary>
-    /// Implements the <see cref="IDisposable"/> contract. 
-    /// NOTE: For full cleanup, this should also call <c>wrappedItem.Dispose()</c> 
-    /// if the decorator is responsible for the wrapped item's lifetime.
-    /// </summary>
-    public void Dispose() {
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
     /// Gets the total defense point value. By default, this delegates the call to the wrapped item.
     /// Concrete subclasses will override this method to add their unique defensive bonus.
     /// </summary>
     /// <returns>The total defense points from the wrapped item.</returns>
     public virtual int GetTotalDefencePoint() {
         return wrappedItem.GetTotalDefencePoint();
+    }
+
+    /// <summary>
+    /// Implements the <see cref="IDisposable"/> contract. 
+    /// NOTE: For full cleanup, this should also call <c>wrappedItem.Dispose()</c> 
+    /// if the decorator is responsible for the wrapped item's lifetime.
+    /// </summary>
+    public void Dispose() {
+        GC.SuppressFinalize(this);
     }
 }

@@ -14,11 +14,11 @@ public abstract class Creature : ICreature, IAttack, ISelectTarget{
     /// <summary>
     /// Gets the equipped defensive item (armor). Can be null.
     /// </summary>
-    public IArmor? Defence {get; private set;}
+    public IArmor Defence {get; private set;}
     /// <summary>
     /// Gets the equipped offensive item (weapon). Can be null.
     /// </summary>
-    public IWeapon? Offence {get; private set;}
+    public IWeapon Offence {get; private set;}
 
     /// <summary>
     /// Gets or sets the current hit points (health) of the creature.

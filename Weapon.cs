@@ -10,8 +10,7 @@ public class Weapon : AttackItem, IWeaponModTarget{
     /// <summary>
     /// Gets the slot type this weapon occupies (e.g., MainHand, OffHand).
     /// </summary>
-    public WeaponSlot Slot {get;private set;}
-
+    public override WeaponSlot WeaponSlot {get;set;}
     /// <summary>
     /// Initializes a new instance of the <see cref="Weapon"/> class.
     /// </summary>
@@ -19,7 +18,7 @@ public class Weapon : AttackItem, IWeaponModTarget{
     /// <param name="slot">The slot this weapon occupies.</param>
     public Weapon(int damageAmount, WeaponSlot slot){
         damageAmount = 0;
-        Slot = slot;
+        WeaponSlot = slot;
     }
 
     /// <summary>
