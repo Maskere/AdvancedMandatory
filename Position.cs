@@ -43,4 +43,8 @@ public struct Position {
     public static Position operator -(Position currentPos, Position newPos){
         return new Position(currentPos.X - newPos.X,currentPos.Y - newPos.Y);
     }
+
+    public override string ToString() {
+        return $"{(X,Y)}";
+    }
 }

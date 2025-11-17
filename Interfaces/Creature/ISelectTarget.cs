@@ -1,5 +1,5 @@
 namespace Mandatory;
 
 public interface ISelectTarget{
-    void SelectTarget();
+    void SelectTarget(IGameObject target);
 }

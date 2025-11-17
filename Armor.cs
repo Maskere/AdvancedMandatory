@@ -7,19 +7,16 @@ namespace Mandatory;
 /// </summary>
 public class Armor : DefenceItem, IArmorModTarget{
     private int armorAmount;
-    /// <summary>
-    /// Gets or sets the slot type this armor occupies (e.g., Head, Torso).
-    /// </summary>
-    public ArmorSlot Slot {get;set;}
 
+    public override ArmorSlot ArmorSlot {get;set;}
     /// <summary>
     /// Initializes a new instance of the <see cref="Armor"/> class.
     /// </summary>
     /// <param name="armorAmount">The initial base defense value of the armor.</param>
     /// <param name="slot">The slot this armor occupies.</param>
-    public Armor(int armorAmount, ArmorSlot slot){
+    public Armor(int armorAmount, ArmorSlot Slot){
         this.armorAmount = armorAmount;
-        Slot = slot;
+        ArmorSlot = Slot;
     }
 
     /// <summary>

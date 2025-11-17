@@ -1,5 +1,5 @@
 namespace Mandatory;
 
 public interface IMoveable{
-    void Move();
+    void Move(Position delta);
 }

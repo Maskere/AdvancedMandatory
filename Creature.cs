@@ -9,6 +9,8 @@ public abstract class Creature : ICreature, IAttack, ISelectTarget{
     private IDamageCalculator damageCalculator;
     private INotifier notifier;
 
+    public IGameObject? currentTarget {get; protected set;}
+
     /// <summary>
     /// Gets the equipped defensive item (armor). Can be null.
     /// </summary>
@@ -46,6 +48,8 @@ public abstract class Creature : ICreature, IAttack, ISelectTarget{
     /// <param name="notifier">The service used to notify the game world (e.g., UI, log) of events.</param>
     /// <param name="damageCalculator">The service used to calculate final damage taken.</param>
     public Creature(ITransform transform,INotifier notifier, IDamageCalculator damageCalculator){
+        this.Defence = new Armor(0,ArmorSlot.None);
+        this.Offence = new Weapon(0,WeaponSlot.None);
         this.transform = transform;
         this.notifier = notifier;
         this.damageCalculator = damageCalculator;
@@ -54,11 +58,11 @@ public abstract class Creature : ICreature, IAttack, ISelectTarget{
     /// <summary>
     /// Abstract method for the creature to select a target for interaction (e.g., attack).
     /// </summary>
-    public abstract void SelectTarget();
+    public abstract void SelectTarget(IGameObject target);
     /// <summary>
     /// Abstract method for the creature's movement logic.
     /// </summary>
-    public abstract void Move();
+    public abstract void Move(Position delta);
     /// <summary>
     /// Abstract method for the creature's attack logic.
     /// </summary>
@@ -82,7 +86,6 @@ public abstract class Creature : ICreature, IAttack, ISelectTarget{
         if(hit <= 0) return;
 
         int totalHitBy = damageCalculator.CalculateFinalDamage(this,hit);
-        HitPoint -= totalHitBy;
 
         string status = $"{Name} was hit for {totalHitBy}";
         notifier.Notify(status);

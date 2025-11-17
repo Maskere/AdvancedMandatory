@@ -21,7 +21,7 @@ public abstract class DefenceItem : IArmor{
     /// <summary>
     /// Gets or sets the slot type this armor occupies (e.g., Head, Torso).
     /// </summary>
-    public ArmorSlot ArmorSlot {get;set;}
+    public abstract ArmorSlot ArmorSlot {get;set;}
     /// <summary>
     /// Gets or sets the position of the item in the game world.
     /// </summary>

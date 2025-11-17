@@ -65,13 +65,25 @@ public class World<T> :IWorld, IDisposable where T : notnull{
     }
 
     /// <summary>
-    /// Sets or updates the value (object) at the specified grid coordinates.
+    /// Attempts to set a value at a specified grid position.
     /// </summary>
-    /// <param name="x">The X-coordinate (column).</param>
-    /// <param name="y">The Y-coordinate (row).</param>
-    /// <param name="value">The new value of type T to place in the cell.</param>
-    public void SetValue(int x, int y, T value){
+    /// <remarks>
+    /// This method only allows setting a value if the target grid cell is currently empty (null). 
+    /// If successful, it optionally updates the position of a world object.
+    /// </remarks>
+    /// <typeparam name="T">The type of the value being stored in the grid.</typeparam>
+    /// <param name="x">The X-coordinate (column index) of the grid cell.</param>
+    /// <param name="y">The Y-coordinate (row index) of the grid cell.</param>
+    /// <param name="value">The value to be set in the specified grid cell.</param>
+    /// <param name="worldObject">An optional object that implements the <see cref="IWorldObject"/> interface.
+    /// If provided and the value is successfully set, its <see cref="IWorldObject.Position"/> will be updated to the new (x, y) coordinates.</param>
+    /// <exception cref="ArgumentException">Thrown if a value is already present (not null) at the specified (x, y) coordinates.</exception>
+    public void SetValue(int x, int y, T value,IWorldObject? worldObject = null){
         grid.SetValue(x,y,value);
+
+        if(worldObject != null){
+            worldObject.Position = new Position(x,y);
+        }
     }
 
     /// <summary>
