@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Manages all active game objects within the world.

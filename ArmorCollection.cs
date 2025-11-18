@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents a collection of individual armor items, treating them as a single IArmor component.

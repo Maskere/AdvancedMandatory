@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public class EventHandler : IObserverHandler{
     private List<IObserverListener> observers = new();

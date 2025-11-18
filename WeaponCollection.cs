@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents a composite structure for managing multiple weapon items, treating them as a single <see cref="IWeapon"/> component.

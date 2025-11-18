@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public interface IWorldManager{
     IGameObject AddGameObject(IGameObject gameObject);

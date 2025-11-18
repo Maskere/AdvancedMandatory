@@ -1,5 +1,5 @@
 using System.Diagnostics;
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public class MyLogger{
     private static MyLogger instance = new();

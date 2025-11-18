@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents the concrete implementation of <see cref="ITransform"/>.

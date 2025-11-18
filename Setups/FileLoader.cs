@@ -1,5 +1,5 @@
 using System.Xml;
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public class FileLoader : IFileLoader {
     public XmlDocument Load(string filePath) {

@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents a two-dimensional grid structure used to store elements of a specific type <typeparamref name="T"/>.

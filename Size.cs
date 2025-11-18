@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents a simple two-dimensional size or dimension (Width/X and Height/Y).

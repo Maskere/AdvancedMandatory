@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public interface IGameObject : IDisposable{
     string? Name {get;set;}

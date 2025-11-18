@@ -1,5 +1,5 @@
 using System.Xml;
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public interface IConfigParser{
     Size ParseDimensions(XmlDocument configFile);

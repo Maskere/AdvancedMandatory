@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Provides an abstract base implementation for the Abstract Factory Pattern,

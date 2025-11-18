@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public interface IArmor : IWorldObject{
     ArmorSlot ArmorSlot {get;set;}

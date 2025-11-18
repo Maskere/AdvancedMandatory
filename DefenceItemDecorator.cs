@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents the abstract base class for all decorators that add functionality to an <see cref="IArmor"/> item.

@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public class EventHandlerHelper : INotifier{
     public void Notify(string message){

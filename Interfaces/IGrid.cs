@@ -1,4 +1,4 @@
-namespace Mandatory;
+namespace MandatoryGameframework;
 
 public interface IGrid<T> where T : notnull{
     int Width {get;}

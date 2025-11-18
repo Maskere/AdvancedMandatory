@@ -1,4 +1,4 @@
-﻿namespace Mandatory;
+﻿namespace MandatoryGameframework;
 
 /// <summary>
 /// Represents the game world, acting as a container and manager for the game grid and world objects.
